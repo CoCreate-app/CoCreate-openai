@@ -8,7 +8,7 @@ const responeFormat = {
 const componentsActionReference = {
     "crud": {
         "actions": ["createDatabase", "readDatabase", "updateDatabase", "deleteDatabase", "createCollection", "readCollection", "updateCollection", "deleteCollection", "createIndex", "readIndex", "updateIndex", "deleteIndex", "createDocument", "readDocument", "updateDocument", "deleteDocument"],
-        "data": { database, collection, index, document, filter }
+        "data": { database, array, index, document, filter }
     },
     "socket": {
         "actions": ["send", "listen"]

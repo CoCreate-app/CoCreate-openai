@@ -1,4 +1,4 @@
-const apiKey = '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';
+const apiKey = '';
 const responeFormat = {
     "component": "<component>",
     "data": "<component.data>"

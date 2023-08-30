@@ -1,18 +1,55 @@
-const apiKey = 'YOUR_API_KEY';
+const apiKey = '';
 const responeFormat = {
     "component": "<component>",
-    "action": "<component.action>",
     "data": "<component.data>"
 }
 
-const componentsActionReference = {
-    "crud": {
-        "actions": ["createDatabase", "readDatabase", "updateDatabase", "deleteDatabase", "createCollection", "readCollection", "updateCollection", "deleteCollection", "createIndex", "readIndex", "updateIndex", "deleteIndex", "createDocument", "readDocument", "updateDocument", "deleteDocument"],
-        "data": { database, array, index, document, filter }
-    },
+const componentsReference = {
     "socket": {
-        "actions": ["send", "listen"]
-    }
+        "functions": {
+            "send": data,
+            "listen": method
+        },
+        "data": { 'broadcast': 'boolean', 'broadcast-sender': 'boolean', 'broadcast-browser': 'boolean' },
+        "html-attributes": ['broadcast', 'broadcast-sender', 'broadcast-browser', 'namespace', 'room', 'balancer']
+    },
+    "crud": {
+        "functions": {
+            "send": data,
+            "listen": method
+        },
+        "methods": ["create.database", "read.database", "update.database", "delete.database", "create.array", "read.array", "update.array", "delete.array", "create.index", "read.index", "update.index", "delete.index", "create.object", "read.object", "update.object", "delete.object"],
+        "data": { method, database, array, index, object, filter },
+        "html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix']
+    },
+    "filter": {
+        "functions": {
+            "getFilter": filter,
+            "setFilter": filter
+        },
+        "filter": { query: [{ key, value, operator, logicalOperator, caseSensitive }], sort: [{ key, direction }], search: [{ value, operator, caseSensitive }] },
+        "html-attributes": ['filter-selector', 'filter-closest', 'filter-parent', 'filter-prvious', 'filter-next', 'filter-key', 'filter-value', 'filter-value-type', 'filter-case-sensitive', 'filter-operator', 'filter-logical-opertor', 'filter-sort-key', 'filter-sort-direction', 'filter-search', 'filter-limit', 'filter-count', 'filter-on']
+    },
+    "crdt": {
+        "functions": { init, getText, updateText, replaceText, undoText, redoText },
+        "data": { array, object, key, value, attribute, start, length },
+        "html-attributes": ['crdt']
+    },
+    "cursors": {
+        "functions": { sendPosition },
+        "data": { array, object, key, start, end },
+        "html-attributes": ['cursors']
+    },
+    "events": {
+        "functions": { init },
+        "data": { prefix, events: [] },
+        "predefined-prefixes": ['click', 'change', 'input', 'onload', 'observer', 'mousedown', 'mousemove', 'mouseup', 'toggle', 'hover', 'selected'],
+        "html-attributes": ['<prefix>-selector', '<prefix>-selector', '<prefix>-closest', '<prefix>-parent', '<prefix>-previous', '<prefix>-next']
+    },
+    "pass": {
+        "html-attributes": ['pass_to', 'pass_id', 'pass-<attribute>', 'pass-refresh']
+    },
+
 };
 
 

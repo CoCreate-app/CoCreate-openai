@@ -22,7 +22,7 @@
     "javascript-framework"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "scripts": {
     "start": "npx webpack --config webpack.config.js",

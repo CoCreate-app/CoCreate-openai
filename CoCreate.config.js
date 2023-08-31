@@ -2,6 +2,24 @@ module.exports = {
     "organization_id": "",
     "key": "",
     "host": "",
+    "directories": [
+        {
+            "entry": "./demo",
+            "array": "files",
+            "object": {
+                "name": "{{name}}",
+                "src": "{{source}}",
+                "host": [
+                    "*",
+                    "general.cocreate.app"
+                ],
+                "directory": "/demo/openai/{{directory}}",
+                "path": "{{path}}",
+                "content-type": "{{content-type}}",
+                "public": "true"
+            }
+        }
+    ],
     "sources": [
         {
             "collection": "files",

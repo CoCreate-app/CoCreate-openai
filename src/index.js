@@ -1,4 +1,4 @@
-const apiKey = '';
+const apiKey = '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';
 const responeFormat = {
     "component": "<component>",
     "data": "<component.data>"
@@ -7,42 +7,42 @@ const responeFormat = {
 const componentsReference = {
     "socket": {
         "functions": {
-            "send": data,
-            "listen": method
+            "send": "<data>",
+            "listen": "<method>"
         },
         "data": { 'broadcast': 'boolean', 'broadcast-sender': 'boolean', 'broadcast-browser': 'boolean' },
         "html-attributes": ['broadcast', 'broadcast-sender', 'broadcast-browser', 'namespace', 'room', 'balancer']
     },
     "crud": {
         "functions": {
-            "send": data,
-            "listen": method
+            "send": "<data>",
+            "listen": "<method>"
         },
         "methods": ["create.database", "read.database", "update.database", "delete.database", "create.array", "read.array", "update.array", "delete.array", "create.index", "read.index", "update.index", "delete.index", "create.object", "read.object", "update.object", "delete.object"],
-        "data": { method, database, array, index, object, filter },
+        "data": { method: "", database: "", array: "", index: "", object: {} || [], filter: {} },
         "html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix']
     },
     "filter": {
         "functions": {
-            "getFilter": filter,
-            "setFilter": filter
+            "getFilter": "<filter>",
+            "setFilter": "<filter>"
         },
-        "filter": { query: [{ key, value, operator, logicalOperator, caseSensitive }], sort: [{ key, direction }], search: [{ value, operator, caseSensitive }] },
+        "filter": { query: [{ key: "", value: "", operator: "", logicalOperator: "", caseSensitive: "true | false" }], sort: [{ key: "", direction: "asc | desc" }], search: [{ value: "", operator: "", caseSensitive: "true | false" }] },
         "html-attributes": ['filter-selector', 'filter-closest', 'filter-parent', 'filter-prvious', 'filter-next', 'filter-key', 'filter-value', 'filter-value-type', 'filter-case-sensitive', 'filter-operator', 'filter-logical-opertor', 'filter-sort-key', 'filter-sort-direction', 'filter-search', 'filter-limit', 'filter-count', 'filter-on']
     },
     "crdt": {
-        "functions": { init, getText, updateText, replaceText, undoText, redoText },
-        "data": { array, object, key, value, attribute, start, length },
+        "functions": ["init", "getText", "updateText", "replaceText", "undoText", "redoText"],
+        "data": { array: "", object: "_id", key: "", value: "", attribute: "bold | italic", start: 0, length: 0 },
         "html-attributes": ['crdt']
     },
     "cursors": {
-        "functions": { sendPosition },
+        "functions": { sendPosition: "<data>" },
         "data": { array, object, key, start, end },
         "html-attributes": ['cursors']
     },
     "events": {
-        "functions": { init },
-        "data": { prefix, events: [] },
+        "functions": { init: "<data>" },
+        "data": { prefix: "", events: [] },
         "predefined-prefixes": ['click', 'change', 'input', 'onload', 'observer', 'mousedown', 'mousemove', 'mouseup', 'toggle', 'hover', 'selected'],
         "html-attributes": ['<prefix>-selector', '<prefix>-selector', '<prefix>-closest', '<prefix>-parent', '<prefix>-previous', '<prefix>-next']
     },

@@ -88,12 +88,13 @@ async function send(form) {
                 filter: {
                     query: [{ key: "", value: "", operator: "$eq | $ne | $includes", logicalOperator: "", caseSensitive: "true | false" }],
                     sort: [{ key: "", direction: "asc | desc" }],
-                    search: [{ value: "", operator: "", caseSensitive: "true | false" }]
+                    search: [{ value: "", operator: "", caseSensitive: "true | false" }],
+                    limit: 0
                 }
             }
         }
 
-        const fileObjectReference = {
+        const filterObjectReference = {
             data: {
                 method: " create.object | read.object | update.object | delete.object",
                 array: "files",
@@ -129,7 +130,7 @@ async function send(form) {
             { role: 'system', content: 'crud reference' + JSON.stringify(crudReference) },
             { role: 'system', content: 'crud object reference' + JSON.stringify(crudObjectReference) },
             { role: 'system', content: 'When using update.object or delete.object methods the data.object._id should be defined or a filter used to return and excute on matches' },
-            { role: 'system', content: 'file object reference' + JSON.stringify(fileObjectReference) },
+            { role: 'system', content: 'file object reference' + JSON.stringify(filterObjectReference) },
             { role: 'system', content: 'If the users request seem to want to create a file or code return the code/source in the data.object.src . This will make the file available over network request using the defined path' },
             { role: 'system', content: 'html attributes reference' + JSON.stringify(htmlAttributesReference) },
             { role: 'system', content: 'component reference' + JSON.stringify(componentsReference) },

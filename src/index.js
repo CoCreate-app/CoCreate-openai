@@ -2,6 +2,7 @@ import Actions from '@cocreate/actions'
 
 const apiKey = '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';
 
+
 const componentsReference = {
     "componentsReference": {
         "socket": {

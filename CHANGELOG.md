@@ -1,0 +1,19 @@
+# 1.0.0 (2023-09-07)
+
+
+### Bug Fixes
+
+* cocreate.js path ([8925ed2](https://github.com/CoCreate-app/CoCreate-openai/commit/8925ed2085f9419c9fa046b9701475a939b7f3a4))
+* filter reference ([4ed6296](https://github.com/CoCreate-app/CoCreate-openai/commit/4ed6296126a9f7a2ec5fcd717618b0b8a456c8c9))
+* merge conflict ([baad9aa](https://github.com/CoCreate-app/CoCreate-openai/commit/baad9aacbe6fb46d7b506cb2acc7b14f4618fcf2))
+* Refactor CoCreate.config.js and index.html ([1b442c1](https://github.com/CoCreate-app/CoCreate-openai/commit/1b442c16dcd2c2c8feacdf059a6b7743fcf2bcf7))
+* Refactor form in index.html for improved functionality ([c504783](https://github.com/CoCreate-app/CoCreate-openai/commit/c504783292ef83d1658603766add05a156e85b64))
+* refrences ([2033de2](https://github.com/CoCreate-app/CoCreate-openai/commit/2033de228e54dfb703dcbd1296934472a553bb6e))
+* remove key ([3525ff0](https://github.com/CoCreate-app/CoCreate-openai/commit/3525ff073b18f08bb47459e47d0eb294be3f0252))
+* update refrences ([e9fabe7](https://github.com/CoCreate-app/CoCreate-openai/commit/e9fabe7705d4294fd6828598ea54834a08192fa6))
+
+
+### Features
+
+* Import Actions from '@cocreate/actions' and make several changes to the componentsReference object. Add new components and their respective functions, data, and html-attributes. Additionally, update the apiUrl and max_tokens values and make changes to the send function. ([d022a66](https://github.com/CoCreate-app/CoCreate-openai/commit/d022a66be4cc09598b1a7bd3e045bdca2a51eb2b))
+* Initial Release ([7624f3a](https://github.com/CoCreate-app/CoCreate-openai/commit/7624f3a12ef3639329d3c8ffd5bee7fc20ac290b))

@@ -52,6 +52,7 @@ const componentsReference = {
 
 };
 
+
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 const max_tokens = 1024;
 const temperature = 0.6;

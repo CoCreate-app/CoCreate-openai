@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.2...v1.0.3) (2023-09-07)
+
+
+### Bug Fixes
+
+* testing ([44e1dfa](https://github.com/CoCreate-app/CoCreate-openai/commit/44e1dfa7cbbdc27c97a038205e1cceb4321ac38c))
+
 ## [1.0.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.1...v1.0.2) (2023-09-07)
 
 

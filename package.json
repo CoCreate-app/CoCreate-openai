@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/openai",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An intergration with openAI and CoCreateJS.",
   "keywords": [
     "openai",

@@ -21,7 +21,9 @@
     "html5-framework",
     "javascript-framework"
   ],
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "npx webpack --config webpack.config.js",
     "build": "npx webpack --mode=production --config webpack.config.js",

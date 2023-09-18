@@ -15,6 +15,7 @@ module.exports = {
                 ],
                 "directory": "/demo/openai/{{directory}}",
                 "path": "{{path}}",
+                "pathname": "{{pathname}}",
                 "content-type": "{{content-type}}",
                 "public": "true"
             }
@@ -26,17 +27,16 @@ module.exports = {
             "object": {
                 "_id": "61a12db2a8b6b4001a9f5a2e",
                 "name": "index.html",
-                "path": "/docs/openai/index.html",
+                "path": "/docs/openai",
+                "pathname": "/docs/openai/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
                     "*",
                     "general.cocreate.app"
                 ],
-                "directory": "/docs/openai",
-                "parentDirectory": "{{parentDirectory}}",
+                "directory": "openai",
                 "content-type": "{{content-type}}",
-                "public": "true",
-                "website_id": "644d4bff8036fb9d1d1fd69c"
+                "public": "true"
             }
         }
     ]

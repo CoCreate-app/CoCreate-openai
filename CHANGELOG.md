@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.6...v1.0.7) (2023-10-09)
+
+
+### Bug Fixes
+
+* bump dependencies ([e8ee687](https://github.com/CoCreate-app/CoCreate-openai/commit/e8ee687be2ca8e6287fc92641b001d959b02f40f))
+* bump dependencies ([ec6fd5f](https://github.com/CoCreate-app/CoCreate-openai/commit/ec6fd5f00b90cb7803340341377fd055d4b33719))
+
 ## [1.0.6](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.5...v1.0.6) (2023-09-18)
 
 

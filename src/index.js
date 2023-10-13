@@ -46,7 +46,7 @@ const componentsReference = {
             "html-attributes": ['<prefix>-selector', '<prefix>-selector', '<prefix>-closest', '<prefix>-parent', '<prefix>-previous', '<prefix>-next']
         },
         "pass": {
-            "html-attributes": ['pass_to', 'pass_id', 'pass-<attribute>', 'pass-refresh']
+            "html-attributes": ['pass_to', 'pass_id', 'pass-<attribute>', 'pass-overwrite']
         },
     }
 

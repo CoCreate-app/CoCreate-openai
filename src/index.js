@@ -141,7 +141,7 @@ async function send(form) {
 
     for (let element of elements) {
         let role = element.getAttribute('openai')
-        let content = element.getValue()
+        let content = await element.getValue()
 
         // if (role === 'system' && !systemMessages.has(content)) {
         // systemMessages.set(content, true)

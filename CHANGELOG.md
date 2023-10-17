@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.9...v1.0.10) (2023-10-17)
+
+
+### Bug Fixes
+
+* await getValue() ([83ad167](https://github.com/CoCreate-app/CoCreate-openai/commit/83ad1678482dffa0ca310ab2f266a459d6ada185))
+
 ## [1.0.9](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.8...v1.0.9) (2023-10-14)
 
 

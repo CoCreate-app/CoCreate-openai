@@ -17,7 +17,7 @@ const componentsReference = {
                 "send": "<data>",
                 "listen": "<method>"
             },
-            "methods": ["create.database", "read.database", "update.database", "delete.database", "create.array", "read.array", "update.array", "delete.array", "create.index", "read.index", "update.index", "delete.index", "create.object", "read.object", "update.object", "delete.object"],
+            "methods": ["database.create", "database.read", "database.update", "database.delete", "array.create", "array.read", "array.update", "array.delete", "index.create", "index.read", "index.update", "index.delete", "object.create", "object.read", "object.update", "object.delete"],
             "data": { method: "", database: "", array: "", index: "", object: {} || [], filter: {} },
             "html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix']
         },
@@ -67,7 +67,7 @@ async function send(form) {
     if (!conversation) {
         const crudReference = {
             data: {
-                method: "create.database | read.database | update.database | delete.database | create.array | read.array | update.array | delete.array | create.index | read.index | update.index | delete.index | create.object | read.object | update.object | delete.object",
+                method: "database.create | database.read | database.update | database.delete | array.create | array.read | array.update | array.delete | index.create | index.read | index.update | index.delete | object.create | object.read | object.update | object.delete",
                 storage: "" || [""],
                 database: "" || [""],
                 array: "" || [""],
@@ -82,7 +82,7 @@ async function send(form) {
         }
         const crudObjectReference = {
             data: {
-                method: " create.object | read.object | update.object | delete.object",
+                method: " object.create | object.read | object.update | object.delete",
                 array: "" || [""],
                 object: {} || [{}],
                 filter: {
@@ -96,7 +96,7 @@ async function send(form) {
 
         const filterObjectReference = {
             data: {
-                method: " create.object | read.object | update.object | delete.object",
+                method: " object.create | object.read | object.update | object.delete",
                 array: "files",
                 object: [{
                     "_id": "",
@@ -122,14 +122,14 @@ async function send(form) {
 
         conversation = [
             { role: 'system', content: 'If the users request seem to want to perform a CRUD operation, return a CoCreateJS CRUD data object as a response. Else reply to best you can to users queries' },
-            { role: 'system', content: 'data.method should default to "create.object", "read.object", "update.object", "delete.object". The following methods should be used if the user specifically request crud operation on the entity. example: return a list of databases, delete array contacts, etc. "create.database", "read.database", "update.database", "delete.database", "create.array", "read.array", "update.array", "delete.array", "create.index", "read.index", "update.index", "delete.index"' },
-            { role: 'system', content: 'To perform CRUD operations on the objects contained within an array, use the following methods: "create.object" for creating objects, "read.object" for reading objects, "update.object" for updating objects, and "delete.object" for deleting objects. The array property must be defined to perform crud operations on objects' },
+            { role: 'system', content: 'data.method should default to "object.create", "object.read", "object.update", "object.delete". The following methods should be used if the user specifically request crud operation on the entity. example: return a list of databases, delete array contacts, etc. "database.create", "database.read", "database.update", "database.delete", "array.create", "array.read", "array.update", "array.delete", "index.create", "index.read", "index.update", "index.delete"' },
+            { role: 'system', content: 'To perform CRUD operations on the objects contained within an array, use the following methods: "object.create" for creating objects, "object.read" for reading objects, "object.update" for updating objects, and "object.delete" for deleting objects. The array property must be defined to perform crud operations on objects' },
             { role: 'system', content: 'data.storage and data.database is not required and should only be defined if the user specifically requests it. example: delete test database from indexeddb storage' },
             { role: 'system', content: 'In the context of CoCreateJS, an "array" corresponds to a "table" in SQL databases or a "collection" in NoSQL databases.' },
             { role: 'system', content: 'In the context of CoCreateJS, an "object" corresponds to a "row" in SQL databases or a "document" in NoSQL databases.' },
             { role: 'system', content: 'crud reference' + JSON.stringify(crudReference) },
             { role: 'system', content: 'crud object reference' + JSON.stringify(crudObjectReference) },
-            { role: 'system', content: 'When using update.object or delete.object methods the data.object._id should be defined or a filter used to return and excute on matches' },
+            { role: 'system', content: 'When using object.update or object.delete methods the data.object._id should be defined or a filter used to return and excute on matches' },
             { role: 'system', content: 'file object reference' + JSON.stringify(filterObjectReference) },
             { role: 'system', content: 'If the users request seem to want to create a file or code return the code/source in the data.object.src . This will make the file available over network request using the defined path' },
             { role: 'system', content: 'html attributes reference' + JSON.stringify(htmlAttributesReference) },

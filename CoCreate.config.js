@@ -10,8 +10,7 @@ module.exports = {
                 "name": "{{name}}",
                 "src": "{{source}}",
                 "host": [
-                    "*",
-                    "general.cocreate.app"
+                    "*"
                 ],
                 "directory": "/demo/openai/{{directory}}",
                 "path": "{{path}}",
@@ -31,8 +30,7 @@ module.exports = {
                 "pathname": "/docs/openai/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
-                    "*",
-                    "general.cocreate.app"
+                    "*"
                 ],
                 "directory": "openai",
                 "content-type": "{{content-type}}",

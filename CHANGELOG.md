@@ -1,3 +1,14 @@
+## [1.0.12](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.11...v1.0.12) (2023-11-09)
+
+
+### Bug Fixes
+
+* favicon.ico path ([818a1d6](https://github.com/CoCreate-app/CoCreate-openai/commit/818a1d676a07bc9644ae788e53377255ade742d1))
+* meta name typo ([b717b25](https://github.com/CoCreate-app/CoCreate-openai/commit/b717b251703faca3fcd44c8f771547296f79f05c))
+* update crud methods ([ecfe922](https://github.com/CoCreate-app/CoCreate-openai/commit/ecfe922aba84e5845a0959417987388c70e8cc10))
+* update dependencies to the lates versions ([34aba71](https://github.com/CoCreate-app/CoCreate-openai/commit/34aba71f9ffd0151fb69d615ab3b8631c39ea0b3))
+* update host ([5d543b3](https://github.com/CoCreate-app/CoCreate-openai/commit/5d543b324dfb9382a64d94caf4016ff9c5a008ea))
+
 ## [1.0.11](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.10...v1.0.11) (2023-10-25)
 
 

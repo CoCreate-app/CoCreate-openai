@@ -1,6 +1,22 @@
+import crud from '@cocreate/crud-client'
 import Actions from '@cocreate/actions'
 
-const apiKey = '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';
+// todo: apikey from orgainization'
+// const apifromCrud = await crud.send({
+//     array: 'organizations',
+//     object: { _id: '' },
+// })
+
+console.log('test', apifromCrud)
+const apiKey = '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';
+const apiUrl = 'https://api.openai.com/v1/chat/completions';
+const model = 'gpt-3.5-turbo'
+const max_tokens = 1024;
+const temperature = 0.6;
+const n = 1;
+const stop = '###STOP###';
+
+const forms = new Map()
 
 const componentsReference = {
     "componentsReference": {
@@ -51,14 +67,6 @@ const componentsReference = {
     }
 
 };
-
-const apiUrl = 'https://api.openai.com/v1/chat/completions';
-const max_tokens = 1024;
-const temperature = 0.6;
-const n = 1;
-const stop = '###STOP###';
-
-const forms = new Map()
 
 async function send(form) {
     let elements = form.querySelectorAll('[openai]')
@@ -115,15 +123,15 @@ async function send(form) {
 
         const htmlAttributesReference = {
             "socket-html-attributes": ['broadcast', 'broadcast-sender', 'broadcast-browser', 'namespace', 'room', 'balancer'],
-            "crud-html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix'],
+            "crud-html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix', 'listen'],
             "filter-html-attributes": ['filter-selector', 'filter-closest', 'filter-parent', 'filter-previous', 'filter-next', 'filter-key', 'filter-value', 'filter-value-type', 'filter-case-sensitive', 'filter-operator', 'filter-logical-opertor', 'filter-sort-key', 'filter-sort-direction', 'filter-search', 'filter-limit', 'filter-count', 'filter-on'],
             "render-html-attributes": ['render', 'render-selector', 'render-closest', 'render-parent', 'render-previous', 'render-next', 'render-as']
         }
 
         conversation = [
-            { role: 'system', content: 'If the users request seem to want to perform a CRUD operation, return a CoCreateJS CRUD data object as a response. Else reply to best you can to users queries' },
-            { role: 'system', content: 'data.method should default to "object.create", "object.read", "object.update", "object.delete". The following methods should be used if the user specifically request crud operation on the entity. example: return a list of databases, delete array contacts, etc. "database.create", "database.read", "database.update", "database.delete", "array.create", "array.read", "array.update", "array.delete", "index.create", "index.read", "index.update", "index.delete"' },
-            { role: 'system', content: 'To perform CRUD operations on the objects contained within an array, use the following methods: "object.create" for creating objects, "object.read" for reading objects, "object.update" for updating objects, and "object.delete" for deleting objects. The array property must be defined to perform crud operations on objects' },
+            { role: 'system', content: 'If the users request seem to want to perform a CRUD operation, return a CoCreateJS CRUD data object as a response. Else reply as best you can to users queries' },
+            { role: 'system', content: 'data.method should default to "object.create", "object.read", "object.update", "object.delete"' },
+            { role: 'system', content: 'To perform CRUD operations on the objects contained within an array, use the following methods: "object.create" for creating objects, "object.read" for reading and returning one or more objects, "object.update" for updating objects, and "object.delete" for deleting objects. The array property must be defined to perform crud operations on objects' },
             { role: 'system', content: 'data.storage and data.database is not required and should only be defined if the user specifically requests it. example: delete test database from indexeddb storage' },
             { role: 'system', content: 'In the context of CoCreateJS, an "array" corresponds to a "table" in SQL databases or a "collection" in NoSQL databases.' },
             { role: 'system', content: 'In the context of CoCreateJS, an "object" corresponds to a "row" in SQL databases or a "document" in NoSQL databases.' },
@@ -136,9 +144,11 @@ async function send(form) {
             { role: 'system', content: 'component reference' + JSON.stringify(componentsReference) },
 
         ]
+
         forms.set(form, conversation)
     }
 
+    // 3 types avialable system, user, assistant
     for (let element of elements) {
         let role = element.getAttribute('openai')
         let content = await element.getValue()
@@ -175,7 +185,7 @@ async function sendMessage(messages) {
                 temperature,
                 n,
                 stop,
-                model: 'gpt-3.5-turbo'
+                model
             }),
         };
 

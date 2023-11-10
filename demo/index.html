@@ -9,7 +9,6 @@
             type="image/png"
             sizes="32x32"
             href="../assets/favicon.ico" />
-        <link rel="manifest" href="/manifest.webmanifest" />
     </head>
     <body>
         <form>
@@ -17,7 +16,23 @@
             <button actions="openAi, reset">click</button>
         </form>
 
+        <div
+            array="users"
+            array="interviews"
+            object
+            filter-sort-key="name"
+            filter-sort-direction="asc"
+            render-selector="[template]">
+            <div
+                class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
+                template
+                object="{{object._id}}"
+                toggle="selected">
+                <p>{{openAi}}</p>
+            </div>
+        </div>
+
         <!-- <script src="../src/CoCreate-openai.js"></script> -->
-        <script src="/dist/CoCreate.js"></script>
+        <script src="./dist/CoCreate.js"></script>
     </body>
 </html>

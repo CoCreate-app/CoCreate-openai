@@ -1,3 +1,12 @@
+## [1.0.13](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.12...v1.0.13) (2023-11-12)
+
+
+### Bug Fixes
+
+* bump dependencies for latest features ([9a82b7f](https://github.com/CoCreate-app/CoCreate-openai/commit/9a82b7f7adfb5602ab0d56d3283ffefaf5523932))
+* relocated persit function out of init ([4385554](https://github.com/CoCreate-app/CoCreate-openai/commit/4385554a524184d9964fefef3eedb43ae530ce53))
+* removed manifest from demo ([2896b36](https://github.com/CoCreate-app/CoCreate-openai/commit/2896b360ab11cf59cccfefef453d3416bbedb580))
+
 ## [1.0.12](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.11...v1.0.12) (2023-11-09)
 
 

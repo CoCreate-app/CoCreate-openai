@@ -7,8 +7,8 @@ import Actions from '@cocreate/actions'
 //     object: { _id: '' },
 // })
 
-console.log('test', apifromCrud)
-const apiKey = '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';
+// console.log('test', apifromCrud)
+const apiKey = localStorage.getItem('openAiKey');
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 const model = 'gpt-3.5-turbo'
 const max_tokens = 1024;
@@ -151,12 +151,20 @@ async function send(form) {
     // 3 types avialable system, user, assistant
     for (let element of elements) {
         let role = element.getAttribute('openai')
-        let content = await element.getValue()
+        let content
+        if (element.hasAttribute('crud')) {
+            // let json = JSON.parse(element.getAttribute('crud'))
+            // content = await crud.send()
+        } else {
+            content = await element.getValue()
+        }
 
         // if (role === 'system' && !systemMessages.has(content)) {
         // systemMessages.set(content, true)
 
         if (role === 'system') {
+            conversation.push({ role, content })
+
             // if (content === 'componentsReference')
             //     conversation.push({ role, content: JSON.stringify(componentsReference) })
             // else
@@ -198,18 +206,21 @@ async function sendMessage(messages) {
 
         // const content = JSON.parse(data.choices[0].message.content);
         const content = data.choices[0].message.content;
-        if (content)
+        if (content) {
             console.log(content)
-
-        const object = extractObjectFromCode(content);
-        if (object) {
-            const { component, action, data } = object;
-            if (CoCreate[component] && CoCreate[component][action]) {
-                CoCreate[component][action](data);
-            } else {
-                console.error('Invalid CoCreateJS API function:', component, action);
-            }
+            let responseElement = document.querySelector('[openai="response"]')
+            if (responseElement)
+                responseElement.setValue(content)
         }
+        // const object = extractObjectFromCode(content);
+        // if (object) {
+        //     const { component, action, data } = object;
+        //     if (CoCreate[component] && CoCreate[component][action]) {
+        //         CoCreate[component][action](data);
+        //     } else {
+        //         console.error('Invalid CoCreateJS API function:', component, action);
+        //     }
+        // }
     } catch (error) {
         console.error('Error:', error);
     }

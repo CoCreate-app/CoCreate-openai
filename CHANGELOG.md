@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.13...v1.0.14) (2023-11-16)
+
+
+### Bug Fixes
+
+* get apikey from localstorage ([bc68cfb](https://github.com/CoCreate-app/CoCreate-openai/commit/bc68cfb3d2341f4de363bfaea5665fe0d3175d32))
+
 ## [1.0.13](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.12...v1.0.13) (2023-11-12)
 
 

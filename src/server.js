@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+const OpenAI = require('openai')
 
 class CoCreateOpenAi {
     constructor(crud) {
@@ -11,31 +11,30 @@ class CoCreateOpenAi {
 
     init() {
         if (this.wsManager) {
-            this.wsManager.on('openAi', (data) => this.send(data));
+            this.wsManager.on(this.name, (data) => this.send(data));
+            this.wsManager.on('openai.chat', (data) => this.send(data));
         }
     }
 
     async send(data) {
         try {
-            let organization = this.organizations[data.organization_id]
+            let organization = await this.organizations[data.organization_id]
             if (!organization) {
-                organization = { apikey: await this.getApiKey(organization_id, this.name) }
-                organization.instance = new OpenAI(organization.apikey);
+                let apiKey = await this.getApiKey(data.organization_id, this.name)
+                organization = new OpenAI({ apiKey });
+                this.organizations[data.organization_id] = organization
             }
 
-            const openai = organization.instance
-            const completion = await openai.chat.completions.create({
-                messages: [{ role: "system", content: "You are a helpful assistant." }],
-                model: "gpt-3.5-turbo",
-            });
-            data.completion = completion
-            console.log(completion.choices[0]);
-            // messages: data.messages,
-            //     max_tokens: data.maxtokens,
-            //         temperature: data.temperature,
-            //             n,
-            //             stop,
-            //             model
+            const openai = organization
+            // let response
+            switch (data.method) {
+                case 'chat':
+                case 'chat.completions':
+                case 'chat.completions.create':
+                case 'openai.chat':
+                    data.chat = await openai.chat.completions.create(data.chat);
+                    break;
+            }
 
             if (data.socket) {
                 let socket = data.socket
@@ -49,14 +48,9 @@ class CoCreateOpenAi {
     }
 
     async getApiKey(organization_id, name) {
-        if (this.organizations[organization_id]) {
-            return await this.organizations[organization_id]
-        } else {
-            this.organizations[organization_id] = this.getOrganization(organization_id, name)
-            this.organizations[organization_id] = await this.organizations[organization_id]
-            return this.organizations[organization_id]
-        }
-
+        this.organizations[organization_id] = this.getOrganization(organization_id, name)
+        this.organizations[organization_id] = await this.organizations[organization_id]
+        return this.organizations[organization_id]
     }
 
     async getOrganization(organization_id, name) {

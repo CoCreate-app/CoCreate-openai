@@ -194,60 +194,48 @@ async function send(form) {
         //     conversation.push({ role: 'user', content })
     }
 
-    if (conversation.length)
-        sendMessage(conversation)
-}
+    if (conversation.length) {
+        try {
 
-async function sendMessage(messages) {
-    try {
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                messages,
-                max_tokens,
-                temperature,
-                n,
-                stop,
-                model
-            }),
-        };
+            let data = await crud.socket.send({
+                method: 'openai.chat',
+                chat: {
+                    messages: conversation,
+                    max_tokens,
+                    temperature,
+                    n,
+                    stop,
+                    model
+                }
+            })
 
-        const response = await fetch(apiUrl, requestOptions);
-        const data = await response.json();
+            if (data) {
+                const content = data.chat.choices[0].message.content;
+                console.log(content)
+                let responseElement = document.querySelector('[openai="response"]')
+                if (responseElement)
+                    responseElement.setValue(content)
+            }
 
-        // const content = JSON.parse(data.choices[0].message.content);
-        const content = data.choices[0].message.content;
-        if (content) {
-            console.log(content)
-            let responseElement = document.querySelector('[openai="response"]')
-            if (responseElement)
-                responseElement.setValue(content)
+            // const object = extractObjectFromCode(content);
+            // if (object) {
+            //     const { component, action, data } = object;
+            //     if (CoCreate[component] && CoCreate[component][action]) {
+            //         CoCreate[component][action](data);
+            //     } else {
+            //         console.error('Invalid CoCreateJS API function:', component, action);
+            //     }
+            // }
+            document.dispatchEvent(new CustomEvent('openAi', {
+                detail: {}
+            }));
+
+        } catch (error) {
+            console.error('Error:', error);
         }
-        // const object = extractObjectFromCode(content);
-        // if (object) {
-        //     const { component, action, data } = object;
-        //     if (CoCreate[component] && CoCreate[component][action]) {
-        //         CoCreate[component][action](data);
-        //     } else {
-        //         console.error('Invalid CoCreateJS API function:', component, action);
-        //     }
-        // }
-        document.dispatchEvent(new CustomEvent('openAi', {
-            detail: {}
-        }));
 
-    } catch (error) {
-        console.error('Error:', error);
     }
 }
-
-// Call the async function
-// init();
-
 
 // Function to extract the object from the generated code
 function extractObjectFromCode(code) {

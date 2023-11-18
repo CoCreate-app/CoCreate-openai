@@ -68,7 +68,65 @@ const componentsReference = {
 
 };
 
-async function send(form) {
+async function send(conversation) {
+    try {
+
+        let data = await crud.socket.send({
+            method: 'openai.chat',
+            chat: {
+                messages: conversation,
+                max_tokens,
+                temperature,
+                n,
+                stop,
+                model
+            }
+        })
+
+        if (data) {
+            const content = data.chat.choices[0].message.content;
+            console.log(content)
+            let responseElement = document.querySelector('[openai="response"]')
+            if (responseElement)
+                responseElement.setValue(content)
+        }
+
+        // const object = extractObjectFromCode(content);
+        // if (object) {
+        //     const { component, action, data } = object;
+        //     if (CoCreate[component] && CoCreate[component][action]) {
+        //         CoCreate[component][action](data);
+        //     } else {
+        //         console.error('Invalid CoCreateJS API function:', component, action);
+        //     }
+        // }
+        document.dispatchEvent(new CustomEvent('openAi', {
+            detail: {}
+        }));
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+
+}
+
+// Function to extract the object from the generated code
+function extractObjectFromCode(code) {
+    try {
+        const regex = /({[\s\S]*?})/;
+        const matches = code.match(regex);
+        if (matches && matches.length === 1) {
+            const object = JSON.parse(matches[0]);
+            return object;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error extracting object from code:', error);
+        return null;
+    }
+}
+
+async function openaiAction(form) {
     let elements = form.querySelectorAll('[openai]')
 
     let conversation = forms.get(form)
@@ -193,72 +251,17 @@ async function send(form) {
         // } else if (role === 'message' && content)
         //     conversation.push({ role: 'user', content })
     }
-
-    if (conversation.length) {
-        try {
-
-            let data = await crud.socket.send({
-                method: 'openai.chat',
-                chat: {
-                    messages: conversation,
-                    max_tokens,
-                    temperature,
-                    n,
-                    stop,
-                    model
-                }
-            })
-
-            if (data) {
-                const content = data.chat.choices[0].message.content;
-                console.log(content)
-                let responseElement = document.querySelector('[openai="response"]')
-                if (responseElement)
-                    responseElement.setValue(content)
-            }
-
-            // const object = extractObjectFromCode(content);
-            // if (object) {
-            //     const { component, action, data } = object;
-            //     if (CoCreate[component] && CoCreate[component][action]) {
-            //         CoCreate[component][action](data);
-            //     } else {
-            //         console.error('Invalid CoCreateJS API function:', component, action);
-            //     }
-            // }
-            document.dispatchEvent(new CustomEvent('openAi', {
-                detail: {}
-            }));
-
-        } catch (error) {
-            console.error('Error:', error);
-        }
-
-    }
+    if (conversation.length)
+        send(conversation);
 }
 
-// Function to extract the object from the generated code
-function extractObjectFromCode(code) {
-    try {
-        const regex = /({[\s\S]*?})/;
-        const matches = code.match(regex);
-        if (matches && matches.length === 1) {
-            const object = JSON.parse(matches[0]);
-            return object;
-        }
-        return null;
-    } catch (error) {
-        console.error('Error extracting object from code:', error);
-        return null;
-    }
-}
-
+export default { send }
 
 Actions.init({
     name: "openAi",
     endEvent: "openAi",
     callback: (action) => {
-        const form = action.element.closest("form");
-        send(form);
+        if (action.form)
+            openaiAction(action.form);
     }
 })

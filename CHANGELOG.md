@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.14...v1.1.0) (2023-11-18)
+
+
+### Bug Fixes
+
+* client and server ([a89d348](https://github.com/CoCreate-app/CoCreate-openai/commit/a89d34824bb2d26e99bbc7c64f740c2930525ccd))
+
+
+### Features
+
+* handle various data types returned from elements ([0bba9eb](https://github.com/CoCreate-app/CoCreate-openai/commit/0bba9eb96107116c1467d14554ca29cdff4e2e34))
+
 ## [1.0.14](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.13...v1.0.14) (2023-11-16)
 
 

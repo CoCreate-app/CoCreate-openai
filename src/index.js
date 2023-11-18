@@ -1,6 +1,6 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(["./client"], function (CoCreateOpenAi) {
+        define(["./client.js"], function (CoCreateOpenAi) {
             return factory(CoCreateOpenAi)
         });
     } else if (typeof module === 'object' && module.exports) {

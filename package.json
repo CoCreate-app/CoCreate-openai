@@ -59,6 +59,7 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/actions": "^1.12.3"
+    "@cocreate/actions": "^1.12.3",
+    "openai": "^4.19.0"
   }
 }

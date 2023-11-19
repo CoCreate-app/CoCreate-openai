@@ -1,3 +1,18 @@
+# [1.2.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.1.0...v1.2.0) (2023-11-19)
+
+
+### Bug Fixes
+
+* client.js file name and relocated openai to server ([f564017](https://github.com/CoCreate-app/CoCreate-openai/commit/f564017be824489fd1f0192c12cb077678082771))
+* path ([bcd46c8](https://github.com/CoCreate-app/CoCreate-openai/commit/bcd46c8ec1bb64e1c2440d23490123d3d1036167))
+
+
+### Features
+
+* export function send ([321acb6](https://github.com/CoCreate-app/CoCreate-openai/commit/321acb61e467e417e7f7cf6f920188b940498106))
+* update dependecies for th latest features and bug fixes ([bdb3319](https://github.com/CoCreate-app/CoCreate-openai/commit/bdb3319cb171d1176d85f3395cc11accd235bc14))
+* use params recieved from client ([68f36ce](https://github.com/CoCreate-app/CoCreate-openai/commit/68f36ce9f08bc4c68a38beccd45e65e7f696186c))
+
 # [1.1.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.0.14...v1.1.0) (2023-11-18)
 
 

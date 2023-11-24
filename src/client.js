@@ -61,8 +61,8 @@ const componentsReference = {
             "predefined-prefixes": ['click', 'change', 'input', 'onload', 'observer', 'mousedown', 'mousemove', 'mouseup', 'toggle', 'hover', 'selected'],
             "html-attributes": ['<prefix>-selector', '<prefix>-selector', '<prefix>-closest', '<prefix>-parent', '<prefix>-previous', '<prefix>-next']
         },
-        "pass": {
-            "html-attributes": ['pass_to', 'pass_id', 'pass-<attribute>', 'pass-overwrite']
+        "state": {
+            "html-attributes": ['state_to', 'state_id', 'state-<attribute>', 'state-overwrite']
         },
     }
 

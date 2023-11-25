@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.2.0...v1.3.0) (2023-11-25)
+
+
+### Bug Fixes
+
+* pass attributes renamed to state ([70fd5ad](https://github.com/CoCreate-app/CoCreate-openai/commit/70fd5ad47dd6b7f1808275ab38eaef84886c174e))
+* update nav, edit button and css path ([8575d49](https://github.com/CoCreate-app/CoCreate-openai/commit/8575d49b4782d8c3037905cd7ef9e9a2ff7a6176))
+
+
+### Features
+
+* upgrade dependencies for latest features and fixes ([d414192](https://github.com/CoCreate-app/CoCreate-openai/commit/d4141928142519087bd2e06c383a24522d31a925))
+
 # [1.2.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.1.0...v1.2.0) (2023-11-19)
 
 

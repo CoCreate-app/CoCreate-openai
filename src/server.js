@@ -20,9 +20,14 @@ class CoCreateOpenAi {
         try {
             let organization = await this.organizations[data.organization_id]
             if (!organization) {
-                let apiKey = await this.getApiKey(data.organization_id, this.name)
-                organization = new OpenAI({ apiKey });
-                this.organizations[data.organization_id] = organization
+                if (data.chat.apiKey) {
+                    organization = new OpenAI({ apiKey: data.chat.apiKey });
+                    this.organizations[data.organization_id] = organization
+                } else {
+                    let apiKey = await this.getApiKey(data.organization_id, this.name)
+                    organization = new OpenAI({ apiKey });
+                    this.organizations[data.organization_id] = organization
+                }
             }
 
             const openai = organization
@@ -32,6 +37,7 @@ class CoCreateOpenAi {
                 case 'chat.completions':
                 case 'chat.completions.create':
                 case 'openai.chat':
+                    delete data.chat.apiKey
                     data.chat = await openai.chat.completions.create(data.chat);
                     break;
             }
@@ -44,6 +50,10 @@ class CoCreateOpenAi {
                 return data
         } catch (error) {
             console.error('OpenAi Error:', error);
+            data.error = error.message
+            let socket = data.socket
+            delete data.socket
+            socket.send(JSON.stringify(data))
         }
     }
 

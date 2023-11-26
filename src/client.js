@@ -11,7 +11,7 @@ import Actions from '@cocreate/actions'
 const apiKey = localStorage.getItem('openAiKey');
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 const model = 'gpt-3.5-turbo'
-const max_tokens = 1024;
+const max_tokens = 3300;
 const temperature = 0.6;
 const n = 1;
 const stop = '###STOP###';

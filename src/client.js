@@ -70,9 +70,9 @@ const componentsReference = {
 
 async function send(conversation) {
     try {
-
         let data = await crud.socket.send({
             method: 'openai.chat',
+            action: 'chat',
             chat: {
                 messages: conversation,
                 max_tokens,
@@ -100,6 +100,7 @@ async function send(conversation) {
         //         console.error('Invalid CoCreateJS API function:', component, action);
         //     }
         // }
+
         document.dispatchEvent(new CustomEvent('openAi', {
             detail: {}
         }));

@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.4.0...v1.5.0) (2023-12-01)
+
+
+### Bug Fixes
+
+* increased max_tokens ([7931c27](https://github.com/CoCreate-app/CoCreate-openai/commit/7931c27895160bec4daf7412b647829f227e454c))
+
+
+### Features
+
+* spoourts using apiKey passed to it or crud read apikey ([150f128](https://github.com/CoCreate-app/CoCreate-openai/commit/150f128639b1fd0a04d581ea0f9cd0db4249f6be))
+
 # [1.4.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.3.0...v1.4.0) (2023-11-25)
 
 

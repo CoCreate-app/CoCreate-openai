@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.5.0...v1.6.0) (2023-12-09)
+
+
+### Features
+
+* simplified usage to support lazyloader ([22323b2](https://github.com/CoCreate-app/CoCreate-openai/commit/22323b2fdbebad667b4b0ce30904554c66583e83))
+
 # [1.5.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.4.0...v1.5.0) (2023-12-01)
 
 

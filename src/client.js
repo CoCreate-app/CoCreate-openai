@@ -10,7 +10,7 @@ import Actions from '@cocreate/actions'
 // console.log('test', apifromCrud)
 const apiKey = localStorage.getItem('openAiKey');
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
-const model = 'gpt-3.5-turbo'
+const model = 'gpt-4-1106-preview'
 const max_tokens = 3300;
 const temperature = 0.6;
 const n = 1;
@@ -84,11 +84,15 @@ async function send(conversation) {
         })
 
         if (data) {
-            const content = data.chat.choices[0].message.content;
-            console.log(content)
+            let content = data.chat.choices[0].message.content;
+            content = content.replace(/```json\n|\n```/g, '');
+            content = JSON.parse(content)
             let responseElement = document.querySelector('[openai="response"]')
-            if (responseElement)
-                responseElement.setValue(content)
+            if (responseElement) {
+                let preValue = responseElement.getValue()
+                let newValue = [...content, ...preValue]
+                responseElement.setValue(newValue)
+            }
         }
 
         // const object = extractObjectFromCode(content);
@@ -213,8 +217,21 @@ async function openaiAction(form) {
         if (!['system', 'user', 'assistant'].includes(role))
             continue
         let content = await element.getValue()
+        if (!content)
+            continue
+
+        if (element.getAttribute('key') === 'careers') {
+            let Content = []
+            if (typeof content === 'string')
+                content = JSON.parse(content)
+            for (let contentItem of content)
+                Content.push(contentItem.name)
+            content = { previousCareers: Content }
+        }
+
         if (typeof content === 'string')
             conversation.push({ role, content })
+
         // if (Array.isArray(content))
         //     conversation.push({ role, content })
         if (typeof content === 'object') {

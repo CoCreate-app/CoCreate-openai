@@ -1,14 +1,6 @@
 import crud from '@cocreate/crud-client'
 import Actions from '@cocreate/actions'
 
-// todo: apikey from orgainization'
-// const apifromCrud = await crud.send({
-//     array: 'organizations',
-//     object: { _id: '' },
-// })
-
-// console.log('test', apifromCrud)
-const apiKey = localStorage.getItem('openAiKey');
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 const model = 'gpt-4-1106-preview'
 const max_tokens = 3300;
@@ -91,9 +83,7 @@ async function send(conversation) {
             // TODO: check if careers exist else create
             let responseElement = document.querySelector('[openai="response"]')
             if (responseElement) {
-                let preValue = responseElement.getValue()
-                let newValue = [...content, ...preValue]
-                responseElement.setValue(newValue)
+                responseElement.setValue(content)
             }
         }
 

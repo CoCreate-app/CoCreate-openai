@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.0...v1.6.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* handle previous value as an array ([8797788](https://github.com/CoCreate-app/CoCreate-openai/commit/8797788c52f71205d99618f9f1ceace9224d9b4d))
+* parse json ([6f16c12](https://github.com/CoCreate-app/CoCreate-openai/commit/6f16c12be977d1ea3597cd3d1c01db613f9ef53d))
+
 # [1.6.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.5.0...v1.6.0) (2023-12-09)
 
 

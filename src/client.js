@@ -87,6 +87,8 @@ async function send(conversation) {
             let content = data.chat.choices[0].message.content;
             content = content.replace(/```json\n|\n```/g, '');
             content = JSON.parse(content)
+
+            // TODO: check if careers exist else create
             let responseElement = document.querySelector('[openai="response"]')
             if (responseElement) {
                 let preValue = responseElement.getValue()
@@ -221,12 +223,7 @@ async function openaiAction(form) {
             continue
 
         if (element.getAttribute('key') === 'careers') {
-            let Content = []
-            if (typeof content === 'string')
-                content = JSON.parse(content)
-            for (let contentItem of content)
-                Content.push(contentItem.name)
-            content = { previousCareers: Content }
+            content = JSON.stringify({ previousCareers: content })
         }
 
         if (typeof content === 'string')

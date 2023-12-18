@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.1...v1.6.2) (2023-12-18)
+
+
+### Bug Fixes
+
+* removed un genralized code ([44764fc](https://github.com/CoCreate-app/CoCreate-openai/commit/44764fccc64c0b70e0b1cb7cf29186811b83b33a))
+
 ## [1.6.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.0...v1.6.1) (2023-12-15)
 
 

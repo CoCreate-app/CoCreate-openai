@@ -1,4 +1,4 @@
-# CoCreate-action
+# CoCreate-openai
 
 A convenient chain handler allows user to chain multiple CoCreate components together. When one action is complete next one will start. The sequence goes untill all openai completed. Grounded on Vanilla javascript, easily configured using HTML5 attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/openai)
 

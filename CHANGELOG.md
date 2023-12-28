@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.2...v1.6.3) (2023-12-28)
+
+
+### Bug Fixes
+
+* typo ([85000fa](https://github.com/CoCreate-app/CoCreate-openai/commit/85000fa434adc25b96e7f14d27fee11188bf4bd6))
+
 ## [1.6.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.1...v1.6.2) (2023-12-18)
 
 

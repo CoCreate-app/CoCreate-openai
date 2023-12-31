@@ -4,7 +4,6 @@
   "description": "An intergration with openAI and CoCreateJS.",
   "keywords": [
     "openai",
-    "chain-functions",
     "cocreate",
     "low-code-framework",
     "no-code-framework",

@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.3...v1.7.0) (2024-01-08)
+
+
+### Features
+
+* bumped CoCreate dependencies to their latest versions ([da6debf](https://github.com/CoCreate-app/CoCreate-openai/commit/da6debf4f7981108a5ac8d7ff65de0a631527faa))
+
 ## [1.6.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.2...v1.6.3) (2023-12-28)
 
 

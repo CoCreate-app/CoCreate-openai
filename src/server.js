@@ -6,17 +6,13 @@ async function send(data) {
     let openai = false;
 
     try {
-        // let organization = await this.organizations[data.organization_id]
-        // if (!organization) {
         if (data.chat.apiKey) {
             openai = new OpenAI({ apiKey: data.chat.apiKey });
         } else {
             let apiKey = data.apis
             openai = new OpenAI({ apiKey });
         }
-        // }
 
-        // let response
         switch (data.method) {
             case 'chat':
             case 'chat.completions':

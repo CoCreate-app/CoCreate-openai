@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.0...v1.7.1) (2024-01-30)
+
+
+### Bug Fixes
+
+* removed dead code ([4c5701f](https://github.com/CoCreate-app/CoCreate-openai/commit/4c5701f05a1dc16f92512c19b71ac70e16976f29))
+
 # [1.7.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.6.3...v1.7.0) (2024-01-08)
 
 

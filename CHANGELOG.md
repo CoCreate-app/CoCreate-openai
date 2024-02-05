@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.1...v1.7.2) (2024-02-05)
+
+
+### Bug Fixes
+
+* Removed https://cdn.cocreate.app/latest/CoCreate.min.css ([abfb162](https://github.com/CoCreate-app/CoCreate-openai/commit/abfb1621ac33a4002b8ffa1c62a58690e4d056bc))
+
 ## [1.7.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.0...v1.7.1) (2024-01-30)
 
 

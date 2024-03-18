@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.3...v1.7.4) (2024-03-18)
+
+
+### Bug Fixes
+
+* replaced keyword spaces with hyphens and lowercase letters only ([5b3ba63](https://github.com/CoCreate-app/CoCreate-openai/commit/5b3ba63ca9bb60ddc296af0a57623480699bf94e))
+
 ## [1.7.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.2...v1.7.3) (2024-03-18)
 
 

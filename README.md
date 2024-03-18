@@ -1,13 +1,21 @@
 # CoCreate-openai
 
-A convenient chain handler allows user to chain multiple CoCreate components together. When one action is complete next one will start. The sequence goes untill all openai completed. Grounded on Vanilla javascript, easily configured using HTML5 attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/openai)
+CoCreate-openai brings the power of OpenAI's advanced AI and machine learning models directly to your web applications. By integrating the OpenAI API, this module enables developers and content creators to easily incorporate AI-driven features such as text generation, language understanding, and more, through both a JavaScript object interface and HTML5 attributes.
 
 ![minified](https://img.badgesize.io/https://cdn.cocreate.app/openai/latest/CoCreate-openai.min.js?style=flat-square&label=minified&color=orange)
 ![gzip](https://img.badgesize.io/https://cdn.cocreate.app/openai/latest/CoCreate-openai.min.js?compression=gzip&style=flat-square&label=gzip&color=yellow)
 ![brotli](https://img.badgesize.io/https://cdn.cocreate.app/openai/latest/CoCreate-openai.min.js?compression=brotli&style=flat-square&label=brotli)
-![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-action?style=flat-square)
-![License](https://img.shields.io/github/license/CoCreate-app/CoCreate-action?style=flat-square)
+![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-openai?style=flat-square)
+![License](https://img.shields.io/github/license/CoCreate-app/CoCreate-openai?style=flat-square)
 ![Hiring](https://img.shields.io/static/v1?style=flat-square&label=&message=Hiring&color=blueviolet)
+
+## Features
+
+-   **Seamless OpenAI Integration**: Effortlessly connect to OpenAI's API to leverage its AI models in your projects.
+-   **JavaScript Object Interface**: Access OpenAI's capabilities programmatically with a simple JavaScript API, allowing for dynamic and complex AI interactions.
+-   **HTML5 Attribute Access**: Initiate AI features directly from HTML with custom attributes, making advanced AI functionalities accessible with minimal coding.
+-   **Versatile AI Applications**: From generating text content and understanding natural language to more sophisticated AI tasks, the possibilities are vast and versatile.
+-   **Easy to Implement**: Designed for ease of use, CoCreate-openai is suitable for developers of all skill levels looking to enhance their projects with AI features.
 
 ![CoCreate-openai](https://cdn.cocreate.app/docs/CoCreate-openai.gif)
 

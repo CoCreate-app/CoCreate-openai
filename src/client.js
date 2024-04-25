@@ -1,7 +1,6 @@
 import crud from '@cocreate/crud-client'
 import Actions from '@cocreate/actions'
 
-const apiUrl = 'https://api.openai.com/v1/chat/completions';
 const model = 'gpt-4-1106-preview'
 const max_tokens = 3300;
 const temperature = 0.6;
@@ -63,7 +62,7 @@ const componentsReference = {
 async function send(conversation) {
     try {
         let data = await crud.socket.send({
-            method: 'openai.chat',
+            method: 'openai.chat.completions.create',
             action: 'chat',
             chat: {
                 messages: conversation,

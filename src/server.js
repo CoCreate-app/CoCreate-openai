@@ -1,7 +1,5 @@
 const OpenAI = require('openai')
 
-const name = 'openai'
-
 async function send(data) {
     let openai = false;
 

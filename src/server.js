@@ -12,10 +12,7 @@ async function send(data) {
         }
 
         switch (data.method) {
-            case 'chat':
-            case 'chat.completions':
             case 'chat.completions.create':
-            case 'openai.chat':
                 delete data.chat.apiKey
                 data.chat = await openai.chat.completions.create(data.chat);
                 break;

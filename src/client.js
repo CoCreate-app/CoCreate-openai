@@ -64,7 +64,7 @@ async function send(conversation) {
         let data = await crud.socket.send({
             method: 'openai.chat.completions.create',
             action: 'chat',
-            chat: {
+            openai: {
                 messages: conversation,
                 max_tokens,
                 temperature,
@@ -75,7 +75,7 @@ async function send(conversation) {
         })
 
         if (data) {
-            let content = data.chat.choices[0].message.content;
+            let content = data.openai.choices[0].message.content;
             content = content.replace(/```json\n|\n```/g, '');
             content = JSON.parse(content)
 

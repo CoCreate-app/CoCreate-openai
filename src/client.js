@@ -63,10 +63,6 @@ async function send(conversation) {
     try {
         let data = await crud.socket.send({
             method: 'openai.chat.completions.create',
-<<<<<<< HEAD
-            action: 'chat',
-=======
->>>>>>> master
             openai: {
                 messages: conversation,
                 max_tokens,

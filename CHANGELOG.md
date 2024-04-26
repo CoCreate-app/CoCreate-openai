@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.8.0...v1.8.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* removed action param ([373ff97](https://github.com/CoCreate-app/CoCreate-openai/commit/373ff97eff9036c726fb6d1a8d23b9babbd9def9))
+
 # [1.8.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.7.4...v1.8.0) (2024-04-26)
 
 

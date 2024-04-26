@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.9.0...v1.9.1) (2024-04-26)
+
+
+### Bug Fixes
+
+* merge conflict ([944e85b](https://github.com/CoCreate-app/CoCreate-openai/commit/944e85b1bcf4f204656c4297710abbffe33a9508))
+
 # [1.9.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.8.1...v1.9.0) (2024-04-26)
 
 

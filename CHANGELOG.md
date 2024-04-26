@@ -1,3 +1,18 @@
+# [1.9.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.8.1...v1.9.0) (2024-04-26)
+
+
+### Bug Fixes
+
+* mereg ([0ddef1e](https://github.com/CoCreate-app/CoCreate-openai/commit/0ddef1eac2e66beeb35bc38e476627998a43b992))
+* replaced keyword spaces with hyphens and lowercase letters only ([2ff22b6](https://github.com/CoCreate-app/CoCreate-openai/commit/2ff22b66eff57a18035d4653fbba3d1b95dd3b20))
+* update method to match openai model ([1e0ed6e](https://github.com/CoCreate-app/CoCreate-openai/commit/1e0ed6efbe2bdb9202d2dd45e234fcb75b33e602))
+* update to support lazyloader (server) ([bd1ef2d](https://github.com/CoCreate-app/CoCreate-openai/commit/bd1ef2d855022efa400d77fe8a13005c313146ca))
+
+
+### Features
+
+* server side handled dynamically using lazyloader (server) ([cd718d5](https://github.com/CoCreate-app/CoCreate-openai/commit/cd718d5baaafd6c30aa58526b2e7476e3fec2e2b))
+
 ## [1.8.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.8.0...v1.8.1) (2024-04-26)
 
 

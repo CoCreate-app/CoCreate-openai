@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/openai",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "Integrates OpenAI's API into web applications, offering easy access to AI-driven features via a JavaScript object interface and HTML5 attributes.",
   "keywords": [
     "openai",

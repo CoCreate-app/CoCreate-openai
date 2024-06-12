@@ -1,3 +1,17 @@
+# [1.10.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.9.2...v1.10.0) (2024-06-12)
+
+
+### Bug Fixes
+
+* add utils and crud-client ([3deb68c](https://github.com/CoCreate-app/CoCreate-openai/commit/3deb68ca5ea482daef70ca958b20769172d0053c))
+* bump cocreate dependencies ([7a208b4](https://github.com/CoCreate-app/CoCreate-openai/commit/7a208b45e27860fbfc06398f84789fbc17896c78))
+* svg icon class ([6751907](https://github.com/CoCreate-app/CoCreate-openai/commit/6751907478791e9e4ab212fd24dd45c9bf32adff))
+
+
+### Features
+
+* define selectors to target and valu-types to parse for ([ebf446f](https://github.com/CoCreate-app/CoCreate-openai/commit/ebf446f84b03fbcc00e4e21cb52e7975e22d02c5))
+
 ## [1.9.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.9.1...v1.9.2) (2024-04-29)
 
 

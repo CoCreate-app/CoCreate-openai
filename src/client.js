@@ -1,5 +1,6 @@
 import crud from '@cocreate/crud-client'
 import Actions from '@cocreate/actions'
+import { queryElements } from '@cocreate/utils';
 
 const model = 'gpt-4-1106-preview'
 const max_tokens = 3300;
@@ -9,57 +10,7 @@ const stop = '###STOP###';
 
 const forms = new Map()
 
-const componentsReference = {
-    "componentsReference": {
-        "socket": {
-            "functions": {
-                "send": "<data>",
-                "listen": "<method>"
-            },
-            "data": { 'broadcast': 'boolean', 'broadcast-sender': 'boolean', 'broadcast-browser': 'boolean' },
-            "html-attributes": ['broadcast', 'broadcast-sender', 'broadcast-browser', 'namespace', 'room', 'balancer']
-        },
-        "crud": {
-            "functions": {
-                "send": "<data>",
-                "listen": "<method>"
-            },
-            "methods": ["database.create", "database.read", "database.update", "database.delete", "array.create", "array.read", "array.update", "array.delete", "index.create", "index.read", "index.update", "index.delete", "object.create", "object.read", "object.update", "object.delete"],
-            "data": { method: "", database: "", array: "", index: "", object: {} || [], filter: {} },
-            "html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix']
-        },
-        "filter": {
-            "functions": {
-                "getFilter": "<filter>",
-                "setFilter": "<filter>"
-            },
-            "filter": { query: [{ key: "", value: "", operator: "$eq | $ne | $includes", logicalOperator: "", caseSensitive: "true | false" }], sort: [{ key: "", direction: "asc | desc" }], search: [{ value: "", operator: "", caseSensitive: "true | false" }] },
-            "html-attributes": ['filter-selector', 'filter-closest', 'filter-parent', 'filter-prvious', 'filter-next', 'filter-key', 'filter-value', 'filter-value-type', 'filter-case-sensitive', 'filter-operator', 'filter-logical-opertor', 'filter-sort-key', 'filter-sort-direction', 'filter-search', 'filter-limit', 'filter-count', 'filter-on']
-        },
-        "crdt": {
-            "functions": ["init", "getText", "updateText", "replaceText", "undoText", "redoText"],
-            "data": { array: "", object: "_id", key: "", value: "", attribute: "bold | italic", start: 0, length: 0 },
-            "html-attributes": ['crdt']
-        },
-        "cursors": {
-            "functions": { sendPosition: "<data>" },
-            "data": { array: [], object: "_id", key: "", start: 0, end: 0 },
-            "html-attributes": ['cursors']
-        },
-        "events": {
-            "functions": { init: "<data>" },
-            "data": { prefix: "", events: [] },
-            "predefined-prefixes": ['click', 'change', 'input', 'onload', 'observer', 'mousedown', 'mousemove', 'mouseup', 'toggle', 'hover', 'selected'],
-            "html-attributes": ['<prefix>-selector', '<prefix>-selector', '<prefix>-closest', '<prefix>-parent', '<prefix>-previous', '<prefix>-next']
-        },
-        "state": {
-            "html-attributes": ['state_to', 'state_id', 'state-<attribute>', 'state-overwrite']
-        },
-    }
-
-};
-
-async function send(conversation) {
+async function send(conversation, action) {
     try {
         let data = await crud.socket.send({
             method: 'openai.chat.completions.create',
@@ -75,13 +26,30 @@ async function send(conversation) {
 
         if (data) {
             let content = data.openai.choices[0].message.content;
-            content = content.replace(/```json\n|\n```/g, '');
-            content = JSON.parse(content)
 
-            // TODO: check if careers exist else create
-            let responseElement = document.querySelector('[openai="response"]')
-            if (responseElement) {
-                responseElement.setValue(content)
+            let valueType = action.element.getAttribute('openai-value-type');
+            content = parseContent(content, valueType)
+            let elements = queryElements({ element: action.element, prefix: 'openai' });
+
+
+
+            let type = action.element.getAttribute('openai-type');
+            if (type === 'form') {
+                if (typeof content !== "object")
+                    return
+                for (let form of elements) {
+                    const inputs = form.querySelectorAll('[name], [key]');
+                    inputs.forEach(element => {
+                        const key = element.getAttribute('key') || element.getAttribute('name');
+                        if (content[key]) {
+                            element.setValue(content[key]);
+                        }
+                    });
+                }
+            } else {
+                for (let element of elements) {
+                    element.setValue(content)
+                }
             }
         }
 
@@ -105,6 +73,31 @@ async function send(conversation) {
 
 }
 
+function parseContent(content, valueType) {
+    let parsedContent;
+
+    if (valueType === 'json') {
+        content = content.replace(/```json\n|\n```/g, '');
+        parsedContent = JSON.parse(content);
+    } else if (valueType === 'javascript') {
+        content = content.replace(/```javascript\n|\n```/g, '');
+        parsedContent = content;
+    } else if (valueType === 'html') {
+        content = content.replace(/```html\n|\n```/g, '');
+        parsedContent = content;
+    } else if (valueType === 'css') {
+        content = content.replace(/```css\n|\n```/g, '');
+        parsedContent = content;
+    } else if (valueType === 'markdown') {
+        parsedContent = content;
+    } else {
+        // Default case to handle any other types or plain text
+        parsedContent = content;
+    }
+
+    return parsedContent;
+}
+
 // Function to extract the object from the generated code
 function extractObjectFromCode(code) {
     try {
@@ -121,85 +114,16 @@ function extractObjectFromCode(code) {
     }
 }
 
-async function openaiAction(form) {
+async function openaiAction(action) {
+    let form = action.form
+    if (!form)
+        return
+
     let elements = form.querySelectorAll('[openai]')
 
     let conversation = forms.get(form)
-    // if (!conversation) {
-    //     const crudReference = {
-    //         data: {
-    //             method: "database.create | database.read | database.update | database.delete | array.create | array.read | array.update | array.delete | index.create | index.read | index.update | index.delete | object.create | object.read | object.update | object.delete",
-    //             storage: "" || [""],
-    //             database: "" || [""],
-    //             array: "" || [""],
-    //             index: "" || [""],
-    //             object: {} || [{}],
-    //             filter: {
-    //                 query: [{ key: "", value: "", operator: "$eq | $ne | $includes", logicalOperator: "", caseSensitive: "true | false" }],
-    //                 sort: [{ key: "", direction: "asc | desc" }],
-    //                 search: [{ value: "", operator: "", caseSensitive: "true | false" }]
-    //             }
-    //         }
-    //     }
-    //     const crudObjectReference = {
-    //         data: {
-    //             method: " object.create | object.read | object.update | object.delete",
-    //             array: "" || [""],
-    //             object: {} || [{}],
-    //             filter: {
-    //                 query: [{ key: "", value: "", operator: "$eq | $ne | $includes", logicalOperator: "", caseSensitive: "true | false" }],
-    //                 sort: [{ key: "", direction: "asc | desc" }],
-    //                 search: [{ value: "", operator: "", caseSensitive: "true | false" }],
-    //                 limit: 0
-    //             }
-    //         }
-    //     }
-
-    //     const filterObjectReference = {
-    //         data: {
-    //             method: " object.create | object.read | object.update | object.delete",
-    //             array: "files",
-    //             object: [{
-    //                 "_id": "",
-    //                 "name": "",
-    //                 "src": "",
-    //                 "host": [
-    //                     "*",
-    //                 ],
-    //                 "directory": "/",
-    //                 "path": "",
-    //                 "content-type": "",
-    //                 "public": "true"
-    //             }]
-    //         }
-    //     }
-
-    //     const htmlAttributesReference = {
-    //         "socket-html-attributes": ['broadcast', 'broadcast-sender', 'broadcast-browser', 'namespace', 'room', 'balancer'],
-    //         "crud-html-attributes": ['storage', 'database', 'array', 'object', 'key', 'index', 'save', 'read', 'update', 'delete', 'realtime', 'crud', 'upsert', 'value-type', 'value-prefix', 'value-suffix', 'listen'],
-    //         "filter-html-attributes": ['filter-selector', 'filter-closest', 'filter-parent', 'filter-previous', 'filter-next', 'filter-key', 'filter-value', 'filter-value-type', 'filter-case-sensitive', 'filter-operator', 'filter-logical-opertor', 'filter-sort-key', 'filter-sort-direction', 'filter-search', 'filter-limit', 'filter-count', 'filter-on'],
-    //         "render-html-attributes": ['render', 'render-selector', 'render-closest', 'render-parent', 'render-previous', 'render-next', 'render-as']
-    //     }
-
-    //     conversation = [
-    //         { role: 'system', content: 'If the users request seem to want to perform a CRUD operation, return a CoCreateJS CRUD data object as a response. Else reply as best you can to users queries' },
-    //         { role: 'system', content: 'data.method should default to "object.create", "object.read", "object.update", "object.delete"' },
-    //         { role: 'system', content: 'To perform CRUD operations on the objects contained within an array, use the following methods: "object.create" for creating objects, "object.read" for reading and returning one or more objects, "object.update" for updating objects, and "object.delete" for deleting objects. The array property must be defined to perform crud operations on objects' },
-    //         { role: 'system', content: 'data.storage and data.database is not required and should only be defined if the user specifically requests it. example: delete test database from indexeddb storage' },
-    //         { role: 'system', content: 'In the context of CoCreateJS, an "array" corresponds to a "table" in SQL databases or a "collection" in NoSQL databases.' },
-    //         { role: 'system', content: 'In the context of CoCreateJS, an "object" corresponds to a "row" in SQL databases or a "document" in NoSQL databases.' },
-    //         { role: 'system', content: 'crud reference' + JSON.stringify(crudReference) },
-    //         { role: 'system', content: 'crud object reference' + JSON.stringify(crudObjectReference) },
-    //         { role: 'system', content: 'When using object.update or object.delete methods the data.object._id should be defined or a filter used to return and excute on matches' },
-    //         { role: 'system', content: 'file object reference' + JSON.stringify(filterObjectReference) },
-    //         { role: 'system', content: 'If the users request seem to want to create a file or code return the code/source in the data.object.src . This will make the file available over network request using the defined path' },
-    //         { role: 'system', content: 'html attributes reference' + JSON.stringify(htmlAttributesReference) },
-    //         { role: 'system', content: 'component reference' + JSON.stringify(componentsReference) },
-
-    //     ]
     if (!conversation)
         forms.set(form, conversation = [])
-    // }
 
     // 3 types avialable system, user, assistant
     for (let element of elements) {
@@ -253,9 +177,11 @@ async function openaiAction(form) {
         //     conversation.push({ role, content })
         // } else if (role === 'message' && content)
         //     conversation.push({ role: 'user', content })
+
     }
+
     if (conversation.length)
-        send(conversation);
+        send(conversation, action);
 }
 
 export default { send }
@@ -264,7 +190,6 @@ Actions.init({
     name: "openAi",
     endEvent: "openAi",
     callback: (action) => {
-        if (action.form)
-            openaiAction(action.form);
+        openaiAction(action);
     }
 })

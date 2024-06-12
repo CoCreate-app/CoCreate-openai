@@ -58,6 +58,8 @@
   },
   "dependencies": {
     "@cocreate/actions": "^1.18.1",
+    "@cocreate/crud-client": "^1.33.9",
+    "@cocreate/utils": "^1.33.7",
     "openai": "^4.19.0"
   }
 }

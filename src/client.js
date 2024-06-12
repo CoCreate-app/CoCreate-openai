@@ -29,9 +29,8 @@ async function send(conversation, action) {
 
             let valueType = action.element.getAttribute('openai-value-type');
             content = parseContent(content, valueType)
+
             let elements = queryElements({ element: action.element, prefix: 'openai' });
-
-
 
             let type = action.element.getAttribute('openai-type');
             if (type === 'form') {
@@ -53,6 +52,7 @@ async function send(conversation, action) {
             }
         }
 
+        // ToDo: handle objects that contain method or set a type for method
         // const object = extractObjectFromCode(content);
         // if (object) {
         //     const { component, action, data } = object;

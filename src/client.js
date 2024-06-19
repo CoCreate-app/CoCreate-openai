@@ -134,8 +134,10 @@ async function openaiAction(action) {
         if (!content)
             continue
 
-        if (element.getAttribute('key') === 'careers') {
-            content = JSON.stringify({ previousCareers: content })
+        let valueType = element.getAttribute('openai-value-type')
+        let keyName = element.getAttribute('key') || element.getAttribute('name')
+        if (valueType === 'json' || valueType === 'object') {
+            content = JSON.stringify({ [keyName]: content })
         }
 
         if (typeof content === 'string')

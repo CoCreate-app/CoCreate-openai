@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.10.0...v1.11.0) (2024-06-19)
+
+
+### Features
+
+* openai-value-type to define structure of data before applying to conversation ([94a8654](https://github.com/CoCreate-app/CoCreate-openai/commit/94a8654063cb7c26566df9d3beb7f2a06257b7d5))
+
 # [1.10.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.9.2...v1.10.0) (2024-06-12)
 
 

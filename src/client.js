@@ -74,28 +74,39 @@ async function send(conversation, action) {
 }
 
 function parseContent(content, valueType) {
-    let parsedContent;
+    let regex;
 
-    if (valueType === 'json') {
-        content = content.replace(/```json\n|\n```/g, '');
-        parsedContent = JSON.parse(content);
-    } else if (valueType === 'javascript') {
-        content = content.replace(/```javascript\n|\n```/g, '');
-        parsedContent = content;
-    } else if (valueType === 'html') {
-        content = content.replace(/```html\n|\n```/g, '');
-        parsedContent = content;
-    } else if (valueType === 'css') {
-        content = content.replace(/```css\n|\n```/g, '');
-        parsedContent = content;
-    } else if (valueType === 'markdown') {
-        parsedContent = content;
-    } else {
-        // Default case to handle any other types or plain text
-        parsedContent = content;
+    // Define the regular expression based on the valueType
+    switch (valueType) {
+        case 'json':
+            regex = /```json\n([\s\S]*?)\n```/;
+            break;
+        case 'javascript':
+            regex = /```javascript\n([\s\S]*?)\n```/;
+            break;
+        case 'html':
+            regex = /```html\n([\s\S]*?)\n```/;
+            break;
+        case 'css':
+            regex = /```css\n([\s\S]*?)\n```/;
+            break;
+        default:
+            break;
     }
 
-    return parsedContent;
+    // Extract the relevant section using the regular expression
+    if (regex) {
+        const match = content.match(regex);
+        if (match && match[1]) {
+            content = match[1].trim();  // Extracted content between the code block markers
+        }
+    }
+
+    if (valueType === 'json') {
+        content = JSON.parse(content);
+    }
+
+    return content;
 }
 
 // Function to extract the object from the generated code

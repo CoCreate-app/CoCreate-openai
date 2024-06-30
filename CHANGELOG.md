@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.11.2...v1.11.3) (2024-06-30)
+
+
+### Bug Fixes
+
+* parser uses match to return matched content only ([154e2d0](https://github.com/CoCreate-app/CoCreate-openai/commit/154e2d0205f6a61eb41f213a047f2406e39ae3e4))
+
 ## [1.11.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.11.1...v1.11.2) (2024-06-23)
 
 

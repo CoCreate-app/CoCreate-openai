@@ -1,3 +1,16 @@
+# [1.12.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.11.3...v1.12.0) (2024-11-04)
+
+
+### Bug Fixes
+
+* pretier.config.js and file formating ([49b03f8](https://github.com/CoCreate-app/CoCreate-openai/commit/49b03f80b7202f9cce55badb0c5265b0dbb6c9a6))
+
+
+### Features
+
+* add prettier.config.js and format files ([dd0d20e](https://github.com/CoCreate-app/CoCreate-openai/commit/dd0d20e5aca8479dd77f8944175a4a8d74ac1249))
+* add prettier.config.js and format files ([85cee57](https://github.com/CoCreate-app/CoCreate-openai/commit/85cee57a2fa9cf7a6471294e488fadbfe5747695))
+
 ## [1.11.3](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.11.2...v1.11.3) (2024-06-30)
 
 

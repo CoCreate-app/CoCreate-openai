@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.12.0...v1.12.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* dispatch end event on action element rather than document ([5b57243](https://github.com/CoCreate-app/CoCreate-openai/commit/5b57243bff5c8492b54d129a50f84819d4942d5c))
+
 # [1.12.0](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.11.3...v1.12.0) (2024-11-04)
 
 

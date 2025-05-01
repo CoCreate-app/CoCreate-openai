@@ -53,9 +53,9 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/actions": "^1.21.0",
-    "@cocreate/crud-client": "^1.34.1",
-    "@cocreate/utils": "^1.38.0",
+    "@cocreate/actions": "^1.21.1",
+    "@cocreate/crud-client": "^1.34.2",
+    "@cocreate/utils": "^1.39.0",
     "openai": "^4.19.0"
   }
 }

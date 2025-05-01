@@ -1,3 +1,13 @@
+## [1.12.2](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.12.1...v1.12.2) (2025-05-01)
+
+
+### Bug Fixes
+
+* added css-loader ([8eaca6c](https://github.com/CoCreate-app/CoCreate-openai/commit/8eaca6cc2b5ad7495d5823d16cf0082050aef93a))
+* update [@cocreate](https://github.com/cocreate) dependencies ([8b19c75](https://github.com/CoCreate-app/CoCreate-openai/commit/8b19c7508a895228b167699869ae4701e766aed8))
+* update query attributes ([e776922](https://github.com/CoCreate-app/CoCreate-openai/commit/e7769225ab72887243bca9f5cc92446a2f8db949))
+* updated cocreate modules versions ([769f26d](https://github.com/CoCreate-app/CoCreate-openai/commit/769f26dd6454b93e97b03c0fa6d17bfe19d8c5be))
+
 ## [1.12.1](https://github.com/CoCreate-app/CoCreate-openai/compare/v1.12.0...v1.12.1) (2025-04-11)
 
 
